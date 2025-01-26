@@ -30,7 +30,7 @@ class HttpController
             $content = $this->outputManager->getM3uContent($format, $params);
 
             if (!headers_sent()) {
-                header('Content-Type: text/plain; charset=utf-8');
+                header('Content-Type: application/vnd.apple.mpegurl');
             }
 
             echo $content;
@@ -86,8 +86,10 @@ class HttpController
 
             // 记录跳转日志
             $this->logger->info('Jump to: ' . $url);
-
             // 执行跳转
+            if (!headers_sent() && str_contains(parse_url($url, PHP_URL_PATH),"m3u8")) {
+                header('Content-Type: application/vnd.apple.mpegurl');
+            }
             header('Location: ' . $url);
             exit;
         } catch (\Exception $e) {
