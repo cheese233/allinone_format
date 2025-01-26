@@ -30,7 +30,7 @@ class RouterController
         ];
 
         // 注册跳转路由
-        $this->routes['/jump'] = [
+        $this->routes['/jump.m3u8'] = [
             'GET' => [HttpController::class, 'jump']
         ];
 

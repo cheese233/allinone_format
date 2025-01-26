@@ -152,7 +152,7 @@ class OutputManager
             $base_url = $this->httpManager->getBaseUrl();
         }
 
-        return $base_url . '/jump?url=' . urlencode($link) . $newDesc;
+        return $base_url . '/jump.m3u8?url=' . urlencode($link) . $newDesc;
     }
 
     public function debugM3uData($params)
