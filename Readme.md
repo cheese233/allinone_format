@@ -72,6 +72,12 @@ cd server && php -S 127.0.0.1:35456 -t public index.php
 
 ## 更新日志
 ```text
+2025-2-16 03:31:36
+    - 增加 bptv 识别
+    - 优化 卫视 频道识别
+    - 移除 rptv ysptp 等废弃分类
+    - 移除 tptv.m3u 相关代码
+
 2025-1-16 14:06:23
     - 修复 migu.m3u tvg-id tvg-name 全部为空导致无法解析的问题
 

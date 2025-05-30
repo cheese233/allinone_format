@@ -8,10 +8,6 @@
                 <v-card-title>请求内容配置</v-card-title>
                 <v-card-text>
                     <div class="d-flex flex-wrap align-center gap-4">
-                        <v-chip class="ma-2" :color="config.fetch_tptv ? 'primary' : 'grey'" variant="outlined">
-                            <v-checkbox v-model="config.fetch_tptv" label="拉取 tptv.m3u 内容" density="comfortable"
-                                hide-details></v-checkbox>
-                        </v-chip>
                         <v-chip class="ma-2" :color="config.fetch_migu ? 'primary' : 'grey'" variant="outlined">
                             <v-checkbox v-model="config.fetch_migu" label="拉取 migu.m3u 内容" density="comfortable"
                                 hide-details></v-checkbox>
@@ -221,7 +217,6 @@ export default {
                 saving.value = true
                 // 只提交本页面相关的配置
                 const configToSave = {
-                    fetch_tptv: props.config.fetch_tptv,
                     fetch_migu: props.config.fetch_migu,
                     migu_uid: props.config.migu_uid,
                     migu_token: props.config.migu_token,

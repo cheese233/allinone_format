@@ -323,11 +323,11 @@ class ChannelManager
         }
 
         // 卫视频道
-        foreach ($this->channelOrders['卫视'] as $ws) {
-            if (strpos($desc, $ws) !== false) {
-                return '卫视';
-            }
-        }
+        // foreach ($this->channelOrders['卫视'] as $ws) {
+        //     if (strpos($desc, $ws) !== false) {
+        //         return '卫视';
+        //     }
+        // }
         if (strpos($desc, '卫视') !== false) {
             return '卫视';
         }
@@ -341,7 +341,7 @@ class ChannelManager
         }
 
         // 地方频道
-        if (preg_match('/^(' . implode('|', $this->channelOrders['地方']) . ')/i', $desc)) {
+        if (preg_match('/^(' . implode('|', $this->channelOrders['地方']) . ')/i', $desc) || preg_match('/^(' . implode('|', $this->channelOrders['地方']) . ')/i', $item['group'])) {
             return '地方';
         }
 

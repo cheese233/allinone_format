@@ -36,12 +36,10 @@ class ConfigManager
 
     // link_type 的 key 值
     private $linkTypeKey = [
-        'ysptp',
         'gaoma',
         'itv',
-        'rptv',
-        'tptv',
         'migu',
+        'bptv',
         'slive',
         'gdcucc',
         'cloudfront',
@@ -52,19 +50,16 @@ class ConfigManager
     private $defaultConfig = [
         'tv_m3u_url' => '',
         'reverse_proxy_domain' => '', // allinone_format 反向代理域名
-        'fetch_tptv' => false, // 是否抓取 tptv.m3u
         'fetch_migu' => true, // 是否抓取 migu.m3u
         'migu_uid' => '', // 咪咕 uid
         'migu_token' => '', // 咪咕 token
         'link_output_jump' => true, // 是否输出跳转链接
         'link_output_desc' => true, // 是否输出频道描述
         'link_type' => [
-            'ysptp' => true,      // 央视频道
             'gaoma' => true,      // 高码频道
             'itv' => true,        // itv 频道
-            'rptv' => true,        // rptv 频道
-            'tptv' => true,       // tptv 频道
             'migu' => true,       // 咪咕频道
+            'bptv' => true,        // bptv 频道
             'slive' => true,      // 直播频道
             'gdcucc' => true,     // 广电频道
             'cloudfront' => true, // CDN 频道

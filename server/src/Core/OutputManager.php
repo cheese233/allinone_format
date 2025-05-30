@@ -58,37 +58,6 @@ class OutputManager
 
         // 判断 $url 是否包含 /tv.m3u
         if (strpos($url, '/tv.m3u') !== false) {
-            // 如果 config 中 fetch_tptv 为 true, 则抓取 tptv.m3u
-            if ($this->configManager->getConfig()['fetch_tptv']) {
-                // 将 $url 中的 tv.m3u 替换成 tptv.m3u
-                $tptvUrl = str_replace('tv.m3u', 'tptv.m3u', $url);
-                $content = $this->httpManager->fetchContent($tptvUrl);
-                if (!$content) {
-                    $this->logger->error('获取tptv.m3u内容失败 tptvUrl: ' . $tptvUrl);
-                } else {
-                    $m3uDataTptv = $this->m3uParser->parse($content);
-                    if (!$m3uDataTptv) {
-                        $this->logger->error('tptv.m3u内容解析失败 tptvUrl: ' . $tptvUrl);
-                    } else {
-                        // $this->logger->debug("tptv.m3u解析完成");
-                        // $this->logger->debug(json_encode($m3uDataTptv, JSON_UNESCAPED_UNICODE));
-
-                        // 合并 m3uData 和 m3uDataTptv
-                        //但 link 相同的频道只保留 tv.m3u 的频道
-
-                        // 提取 link 数组
-                        $linkArray = array_column($m3uData, 'link');
-                        foreach ($m3uDataTptv as $item) {
-                            // 从 m3uData 中查找是否存在相同的 link
-                            $index = array_search($item['link'], $linkArray);
-                            if ($index === false) {
-                                $m3uDataMerged[] = $item;
-                            }
-                        }
-                        unset($linkArray);
-                    }
-                }
-            }
             // 如果 config 中 fetch_migu 为 true, 则抓取 migu.m3u
             if ($this->configManager->getConfig()['fetch_migu']) {
                 // 将 $url 中的 tv.m3u 替换成 migu.m3u
